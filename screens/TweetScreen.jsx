@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo'; //https://icons.expo.fyi/Index/Entypo/dots-three-vertical
+import EvilIcons from '@expo/vector-icons/EvilIcons';
+import { AntDesign } from "@expo/vector-icons";
 
 export default function TweetScreen() {
     return (
@@ -43,6 +45,20 @@ export default function TweetScreen() {
                     </View>
             </View>
             
+            <View style={[styles.tweetEngagement, styles.spaceAround]}>
+                <TouchableOpacity>
+                    <EvilIcons name="comment" size={32} color="gray" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <EvilIcons name="retweet" size={32} color="gray" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <EvilIcons name="heart" size={32} color="gray" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <EvilIcons name={Platform.OS === 'ios' ? 'share-apple' : 'share-google'} size={32} color="gray" />
+                </TouchableOpacity>
+            </View>
 
         </View>
     )
@@ -103,5 +119,8 @@ const styles = StyleSheet.create ({
     },
     ml4: {
         marginLeft: 4,
+    },
+    spaceAround: {
+        justifyContent: 'space-around',
     },
 })
